@@ -20,6 +20,11 @@ defmodule Awesome do
     defp _parseOp([head | _]) when head in '+-*/', do: head
     defp _parseOp([_ | tail]), do: _parseOp(tail)
 
+    @doc """
+    Parse each part. We use same parser for both lefth and right operands.
+    We just reverses the charlist like starting from right side,
+    then reverse back to get correct list.
+    """
     def calculate(str) do
         leftOp = _parseLeftOp(str)
         # same parser but reverse
